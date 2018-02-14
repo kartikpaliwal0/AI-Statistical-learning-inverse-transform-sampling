@@ -1,0 +1,35 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import math
+x=[]
+n = 10
+p = 0.3
+q = 1-p
+freq=[]
+def P(k):
+    #return((((math.factorial(n)/(math.factorial(k)*math.factorial(n-k)))*(p**k)*((q)**n-k))
+    one = math.factorial(n)/(math.factorial(n-k)*math.factorial(k))
+    two = (p**k)*(q**(n-k)) 
+    return one*two   
+for xs in range(0,10000):
+    prob=np.random.rand()
+
+    kk=0
+    r=0
+    while kk<=prob and r<=n:
+            kk = kk+ P(r)
+            r+=1
+    r-=1
+    freq.append(r)
+freq.sort()
+yaxis = []
+def remove_duplicate(alist):
+    return list(set(alist))
+xaxis = remove_duplicate(freq)
+for r in range(len(xaxis)):
+    yaxis.append(freq.count(r))
+
+print(yaxis)
+print(xaxis)
+
+plt.scatter(xaxis,yaxis)
